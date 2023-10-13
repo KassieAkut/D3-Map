@@ -1,4 +1,5 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+import topojson from 'https://cdn.jsdelivr.net/npm/topojson@3.0.2/+esm'
 import { feature } from '.\topojson';
 
 const width = 900;
