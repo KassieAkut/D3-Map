@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>D3 World Map</title>
+    <style>
+      path {
+        stroke: white;
+        stroke-width: 0.5px;
+        fill: black;
+      }
+    </style>
+    <script type="text/javascript" src="d3.v7.min.js"></script> 
+    
+  </head>
+  <body>
+    <script type="text/javascript">
+      var width = 900;
+      var height = 600;
+
+      var projection = d3.geoNaturalEarth1().translate([width/2, height/2])
+ .scale(3000)
+ .center([-5, 53]);;
+      
+      var svg = d3.select("body").append("svg")
+          .attr("width", width)
+          .attr("height", height);
+      var path = d3.geoPath()
+          .projection(projection);
+      var g = svg.append("g");
+      
+    var first =  d3.json('https://yamu.pro/gb.json', function(error, data) {
+   if (error) {
+     console.error(error);
+     return;
+   }
+ 
+   console.log(data);
+ 
+   g.selectAll('.country') // Use .country to select elements with the "country" class
+     .data(data.features)
+     .enter().append('path')
+     .attr('class', 'country')
+     .attr('d', path);
+ });
+
+ assesmentData = d3.json('http://34.38.72.236/Circles/Towns/50')
+
+    let svg = d3.select(DOM.svg(width, height));
+
+// Append empty placeholder g element to the SVG
+// g will contain geometry elements
+let g = svg.append( "g" );
+let united = svg.append( "g" );
+  
+// Classic D3... Select non-existent elements, bind the data, append the elements, and apply attributes
+g.selectAll( "path" )
+    .data( first.features )
+    .enter()
+    .append( "path" )
+    .attr( "fill", "#ccc" )
+    .attr( "stroke", "#333")
+    .attr( "d", bos_geoPath );
+  
+rodents.selectAll( "path" )
+    .data( rodentData.features )
+    .enter()
+    .append( "path" )
+    .attr( "fill", "#900" )
+    .attr( "stroke", "#999" )
+    .attr( "d", bos_geoPath );
+  
+return svg.node();
+
+
+ 
+
+
+    </script>
+  </body>
+</html>
