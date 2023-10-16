@@ -1,0 +1,11 @@
+body {
+    background: #010101;
+height: 100%;
+margin: 0;
+padding: 0;
+}
+.country{
+fill:#045041;
+stroke: #150753;
+stroke-width: 0.5;
+}
