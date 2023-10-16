@@ -28,3 +28,36 @@ async function getTopo() {
 }
 
 getTopo();
+
+
+
+
+var width = 900;
+ var height = 600;
+ 
+ var svg = d3.select('body')
+   .append('svg')
+   .attr('width', width)
+   .attr('height', height);
+ 
+var projection = d3.geoNaturalEarth1().translate([width/2, height/2])
+ .scale(3000)
+ .center([-5, 53]); // Adjust the center and scale accordingly
+ var path = d3.geoPath(projection);
+ 
+ var g = svg.append('g');
+ 
+ d3.json('https://yamu.pro/gb.json', function(error, data) {
+   if (error) {
+     console.error(error);
+     return;
+   }
+ 
+   console.log(data);
+ 
+   g.selectAll('.country') // Use .country to select elements with the "country" class
+     .data(data.features)
+     .enter().append('path')
+     .attr('class', 'country')
+     .attr('d', path);
+ });
